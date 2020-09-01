@@ -37,6 +37,8 @@ export default class EpisodeDetails extends React.Component {
 		this.state = {
 			episode: props.episode
 		};
+
+		this.goToEpisode = props.goToEpisode
 	}
 
 	render (props) {
@@ -50,6 +52,7 @@ export default class EpisodeDetails extends React.Component {
 
 				<NavLink
 					to={'/episode'}
+					onClick={() => this.goToEpisode(this.state.episode) }
 				>
 					<img src={this.state.episode.image?.medium}
 							 alt="episode image missing."/>

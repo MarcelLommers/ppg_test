@@ -68,13 +68,14 @@ export default class Episode extends React.Component {
 
 		return (
 			<div className='episode'>
-				<h1>{ this.state.episodeData.name }</h1>
+				<h1>{ (this.state.episodeData.name || 'episode title missing.') }</h1>
 
 				<div className='show-details'>
-					<img src={this.state.episodeData.image.medium} />
+					<img src={this.state.episodeData.image?.medium}
+							 alt="episode image missing."/>
 
 					<div className='description'>
-						{ ReactHtmlParser(this.state.episodeData.summary) }
+						{ ReactHtmlParser(this.state.episodeData.summary || 'episode summary missing.')  }
 					</div>
 				</div>
 

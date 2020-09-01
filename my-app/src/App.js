@@ -66,13 +66,15 @@ export default class App extends React.Component {
 
           <div className='content'>
             <Switch>
-              <Route path="/Show">
+              <Route path="/show">
                 <Show
                   showId={ this.state.showId }
                   setEpisodeHandler={ this.setEpisode }
+                  setSeasonHandler={ this.setSeason }
+                  setEpisodeHandler={ this.setEpisode }
                 />
               </Route>
-              <Route path="/Episode">
+              <Route path="/episode">
                 <Episode
                   showId={ this.state.showId }
                   season={ this.state.season}

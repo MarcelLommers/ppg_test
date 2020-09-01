@@ -1,5 +1,7 @@
 import React from 'react';
 
+import '../layout/Home.scss';
+
 export default class Home extends React.Component {
 
 	state = {
@@ -8,7 +10,7 @@ export default class Home extends React.Component {
 		episode: null
 	}
 
-	constructor(props) {
+	constructor (props) {
 		super(props);
 
 		this.state = {
@@ -23,7 +25,7 @@ export default class Home extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 	}
 
-	handleChange(event) {
+	handleChange (event) {
 		this.setState({
 			[event.target.name]: event.target.value
 		})
@@ -32,45 +34,53 @@ export default class Home extends React.Component {
 
 	render (props) {
 		return (
-			<div>
+			<div className='home'>
 				<h1>Home page</h1>
 
-				<label>
-					ShowId:
+				<div class='input-block'>
+					<label>
+						ShowId:
+					</label>
+
 					<input type="text"
 								 name="showId"
 								 value={this.state.showId}
 								 onChange={this.handleChange}
 					/>
-				</label>
-				<button onClick={() => this.setShowIdHandler(this.state.showId)}>
-					Submit
-				</button>
+					<button onClick={() => this.setShowIdHandler(this.state.showId)}>
+						Submit
+					</button>
+				</div>
 
-				<label>
-					Season:
+				<div className='input-block'>
+					<label>
+						Season:
+					</label>
+
 					<input type="text"
 								 name="season"
 								 value={this.state.season}
 								 onChange={this.handleChange}
 					/>
-				</label>
-				<button onClick={() => this.setSeasonHandler(this.state.season)}>
-					Submit
-				</button>
+					<button onClick={() => this.setSeasonHandler(this.state.season)}>
+						Submit
+					</button>
+				</div>
 
-				<label>
-					Episode:
+				<div className='input-block'>
+					<label>
+						Episode:
+					</label>
+
 					<input type="text"
 								 name="episode"
 								 value={this.state.episode}
 								 onChange={this.handleChange}
 					/>
-				</label>
-
-				<button onClick={() => this.setEpisodeHandler(this.state.episode)}>
-					Submit
-				</button>
+					<button onClick={() => this.setEpisodeHandler(this.state.episode)}>
+						Submit
+					</button>
+				</div>
 
 			</div>
 		)

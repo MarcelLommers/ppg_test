@@ -42,6 +42,11 @@ export default class Show extends React.Component {
 		this.state = {
 			showId: props.showId
 		};
+
+		this.goToEpisode = this.goToEpisode.bind(this);
+
+		this.setSeasonHandler = props.setSeasonHandler
+		this.setEpisodeHandler = props.setEpisodeHandler
 	}
 
 	async componentDidMount() {
@@ -65,6 +70,11 @@ export default class Show extends React.Component {
 		console.log(data);
 	}
 
+	goToEpisode (episode) {
+		this.setSeasonHandler(episode.season)
+		this.setEpisodeHandler(episode.number)
+	}
+
 	render (props) {
 
 		if (this.loading) {
@@ -77,25 +87,25 @@ export default class Show extends React.Component {
 
 		return (
 			<div className='show'>
-				<h1>{ this.state.showData.name }</h1>
+				<h1>{ this.state.showData?.name }</h1>
 
 				<div className='show-details'>
-					<img src={this.state.showData.image.medium} />
+					<img src={this.state.showData?.image.medium} />
 
 					<div className='description'>
-						{ ReactHtmlParser(this.state.showData.summary) }
+						{ ReactHtmlParser(this.state.showData?.summary) }
 					</div>
 				</div>
 
 				<div className='url-list'>
 					{
-						this.state.showData.url.length > 0 &&
+						this.state.showData?.url?.length > 0 &&
 						<a href={ this.state.showData.url }>
 							Check this show on tvMaze!
 						</a>
 					}
 					{
-						this.state.showData.officialSite.length > 0 &&
+						this.state.showData?.officialSite?.length > 0 &&
 						<a href={ this.state.showData.officialSite }>
 							Check this show's official site!
 						</a>
@@ -106,8 +116,9 @@ export default class Show extends React.Component {
 					{
 						this.state.episodes?.map(episode => (
 							<EpisodeDetails
-								key={episode.id}
-								episode={episode}
+								key={ episode.id }
+								episode={ episode }
+								goToEpisode={ this.goToEpisode }
 							>
 							</EpisodeDetails>
 						))

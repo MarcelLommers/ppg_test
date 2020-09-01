@@ -1,0 +1,19 @@
+.home {
+  display: flex;
+  flex-direction: column;
+
+  .input-block {
+    padding: 5px;
+
+    label {
+      display: block;
+      margin-right: 5px;
+      width: 120px;
+    }
+
+    input {
+      width: 130px;
+      margin-right: 5px;
+    }
+  }
+}
