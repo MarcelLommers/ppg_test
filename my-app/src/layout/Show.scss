@@ -1,0 +1,51 @@
+.show {
+
+  .show-details {
+    display: flex;
+    flex-direction: row;
+
+    img {
+      width: 210px;
+      height: 295px;
+    }
+
+    .description {
+      padding: 10px;
+      flex: 1 1;
+    }
+  }
+
+  .url-list {
+
+    a {
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+
+  .episode-list {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    margin-top: 15px;
+    overflow-x: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .show {
+    overflow-y: auto;
+
+    .show-details {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .episode-list {
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+}

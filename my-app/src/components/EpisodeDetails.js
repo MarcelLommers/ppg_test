@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactHtmlParser from 'react-html-parser'
+import {NavLink} from "react-router-dom";
 
-import '../layout/Show.scss';
+import '../layout/EpisodeDetails.scss';
 
-export default class Episode extends React.Component {
+
+export default class EpisodeDetails extends React.Component {
 
 	state = {
-		showId: 6771,
-		season: 1,
-		episode: 1,
 		loading: true,
-		episodeData: {
+		episode: {
 			"id":657308,
 			"url":"http://www.tvmaze.com/episodes/657308/the-powerpuff-girls-1x01-escape-from-monster-island",
 			"name":"Escape from Monster Island",
@@ -32,52 +31,33 @@ export default class Episode extends React.Component {
 			}
 		}
 	}
-
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			showId: props.showId,
-			season: props.season,
 			episode: props.episode
 		};
 	}
 
-	async componentDidMount() {
-		this.fetchEpisode()
-	}
-
-	async fetchEpisode () {
-		console.log(this.state)
-		const url = "http://api.tvmaze.com/shows/" + this.state.showId + '/episodebynumber?season=' + this.state.season + '&number=' + this.state.episode;
-		const response = await fetch(url);
-		const data = await response.json();
-		this.setState({ episodeData: data, loading: false });
-		console.log(data);
-	}
-
 	render (props) {
-
-		if (this.loading) {
-			return <span>Loading...</span>
-		}
-
-		if (!this.state.episodeData) {
-			return <span>no data found for episode</span>
+		if (!this.state.episode) {
+			return <span>no data for episode found.</span>
 		}
 
 		return (
-			<div className='episode'>
-				<h1>{ this.state.episodeData.name }</h1>
+			<div className='episode-details'>
+				<span>{ (this.state.episode.name || 'episode title missing.') } </span>
 
-				<div className='show-details'>
-					<img src={this.state.episodeData.image.medium} />
+				<NavLink
+					to={'/episode'}
+				>
+					<img src={this.state.episode.image?.medium}
+							 alt="episode image missing."/>
+				</NavLink>
 
-					<div className='description'>
-						{ ReactHtmlParser(this.state.episodeData.summary) }
-					</div>
+				<div className='description'>
+					{ ReactHtmlParser(this.state.episode.summary || 'episode summary missing.')  }
 				</div>
-
 			</div>
 		)
 	}
