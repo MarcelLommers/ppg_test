@@ -1,0 +1,24 @@
+nav {
+  display: inline-block;
+  background-color: #afafaf;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: block;
+      margin-bottom: 5px;
+
+      a {
+        color: blue;
+        font-family: Arial;
+
+        &.active {
+          color: green;
+          border-bottom: green 2px solid;
+        }
+      }
+    }
+  }
+}
