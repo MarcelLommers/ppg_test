@@ -69,7 +69,6 @@ export default class App extends React.Component {
               <Route path="/show">
                 <Show
                   showId={ this.state.showId }
-                  setEpisodeHandler={ this.setEpisode }
                   setSeasonHandler={ this.setSeason }
                   setEpisodeHandler={ this.setEpisode }
                 />

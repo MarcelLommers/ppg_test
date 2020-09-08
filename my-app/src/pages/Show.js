@@ -90,7 +90,8 @@ export default class Show extends React.Component {
 				<h1>{ this.state.showData?.name }</h1>
 
 				<div className='show-details'>
-					<img src={this.state.showData?.image.medium} />
+					<img src={this.state.showData?.image.medium}
+							 alt="show image missing." />
 
 					<div className='description'>
 						{ ReactHtmlParser(this.state.showData?.summary) }
